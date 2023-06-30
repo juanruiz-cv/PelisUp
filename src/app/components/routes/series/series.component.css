@@ -1,0 +1,33 @@
+.title {
+  margin-top: 80px;
+  color: var(--grey50);
+}
+
+.search {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 1px solid #475069;
+  color: #ffffff;
+  padding: 18px;
+  max-width: 344px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.search::placeholder {
+  font-family: 'Poppins', 'FontAwesome';
+  color: var(--grey600);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.search:focus-visible {
+  outline: var(--grey600) auto 1px;
+}
+
+.all {
+  color: var(--grey400);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
