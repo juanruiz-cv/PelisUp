@@ -31,3 +31,9 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.mini-title {
+  font-size: 16px;
+  line-height: 0;
+  color: var(--primary200);
+}

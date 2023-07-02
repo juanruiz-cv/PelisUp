@@ -6,6 +6,7 @@ import { SeriesComponent } from './series/series.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
+import { AppRoutingModule } from '../../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { SharedModule } from '../shared/shared.module';
     LoginComponent,
     RegisterComponent,
   ],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, AppRoutingModule],
   exports: [
     HomeComponent,
     MoviesComponent,

@@ -113,7 +113,6 @@
 
 body {
     font-family: "Poppins", sans-serif;
-    min-height: 100vh;
     background: #1e3c72;
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2a5298, #1e3c72);
