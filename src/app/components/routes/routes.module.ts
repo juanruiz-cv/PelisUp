@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../../app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { AppRoutingModule } from '../../app-routing.module';
     LoginComponent,
     RegisterComponent,
   ],
-  imports: [CommonModule, SharedModule, AppRoutingModule],
+  imports: [CommonModule, SharedModule, AppRoutingModule, FormsModule],
   exports: [
     HomeComponent,
     MoviesComponent,

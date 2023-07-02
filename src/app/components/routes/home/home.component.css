@@ -29,6 +29,7 @@
   text-align: center;
   cursor: pointer;
   color: var(--grey300);
+  user-select: none;
 }
 
 .item-tab:hover {
@@ -68,4 +69,50 @@
   color: var(--grey400);
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+
+/* CARDS */
+
+.title-card {
+  padding: 5px;
+}
+
+.star {
+  top: 18px;
+  left: 18px;
+  position: absolute;
+  color: var(--warning500);
+  background-color: var(--black75);
+  border-radius: 8px;
+  height: 40px;
+  width: 60px;
+}
+
+.portada {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.cards {
+  position: relative;
+  background: var(--black50);
+  color: var(--grey50);
+  border-radius: 12px;
+  padding: 8px;
+  margin: 12px;
+  max-width: 253px;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+  transition: .5s ease-in-out;
+}
+
+.cards:hover {
+  background: var(--grey50);
+  color: var(--black50);
+}
+
+.cards p {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
