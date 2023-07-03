@@ -4,21 +4,25 @@
   </div>
   <div class="login-container">
     <h1 class="title">Registrar</h1>
-    <form>
+    <form (ngSubmit)="sendUser()" autocomplete="off" [formGroup]="formUser">
       <input
         class="search"
         type="email"
+        formControlName="email"
         placeholder="&#xf0e0; Email"
-        name=""
-        id=""
       />
+      <span class="form-text text-danger" *ngIf="validForm('email')">
+        El formato de correo no es valido.
+      </span>
       <input
         class="search"
         type="password"
+        formControlName="password"
         placeholder="&#xf084; Contraseña"
-        name=""
-        id=""
       />
+      <span class="form-text text-danger" *ngIf="validForm('password')">
+        Debe ser mayor a 6 digitos.
+      </span>
       <p class="text-register">
         ¿Tienes cuenta? <a routerLink="../login">Ingresar</a>
       </p>
@@ -31,6 +35,7 @@
     </div>
     <div class="login-container-google">
       <img
+        (click)="loginWithGoogle()"
         class="logo-google"
         src="assets/img/btn_google_signin.png"
         alt="img register google"

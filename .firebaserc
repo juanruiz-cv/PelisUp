@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "curso-angular-8f646": {
+      "hosting": {
+        "PelisUp": [
+          "curso-angular-8f646"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "curso-angular-8f646"
+  }
+}

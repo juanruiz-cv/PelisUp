@@ -4,21 +4,25 @@
   </div>
   <div class="login-container">
     <h1 class="title">Ingresar</h1>
-    <form>
+    <form (ngSubmit)="sendUser()" autocomplete="off" [formGroup]="formUser">
       <input
         class="search"
         type="email"
+        formControlName="email"
         placeholder="&#xf0e0; Email"
-        name=""
-        id=""
       />
+      <span class="form-text text-danger" *ngIf="validForm('email')">
+        El formato de correo no es valido.
+      </span>
       <input
         class="search"
         type="password"
+        formControlName="password"
         placeholder="&#xf084; Contraseña"
-        name=""
-        id=""
       />
+      <span class="form-text text-danger" *ngIf="validForm('password')">
+        Debe ser mayor a 6 digitos.
+      </span>
       <p class="text-login">
         ¿No tienes cuenta? <a routerLink="../register">Registrar</a>
       </p>
