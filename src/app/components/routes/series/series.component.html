@@ -4,10 +4,19 @@
       <small class="mini-title">PelisUP!</small><br />
       Series
     </h1>
-    <input class="search" placeholder="&#xf002; Buscar series" type="search" />
+    <input
+      class="search"
+      placeholder="&#xf002; Buscar series"
+      type="search"
+      name="toSearch"
+      [(ngModel)]="toSearch"
+      (ngModelChange)="search(toSearch)"
+    />
   </div>
 </section>
 <section class="container">
-  <h3 class="all d-block"><small class="body-regular">120 items</small></h3>
-  <app-card></app-card>
+  <h3 class="all d-block">
+    <small class="body-regular">{{ movieResult.length }} series</small>
+  </h3>
+  <app-card [data]="movieResult"></app-card>
 </section>

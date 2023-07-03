@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
-
-interface Movie {
-  vote: string;
-  img: string;
-  title: string;
-  category: string;
-}
+import { Movie, ResponseData } from 'src/app/services/movies/movie';
+import { MoviesService } from 'src/app/services/movies/movies.service';
 
 @Component({
   selector: 'app-home',
@@ -13,85 +8,74 @@ interface Movie {
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  moviesList: Movie[] = [
-    {
-      vote: '6.8',
-      img: './assets/portadas/img1.jpg',
-      title: 'Black Widow',
-      category: 'movie',
-    },
-    {
-      vote: '7.9',
-      img: './assets/portadas/img2.jpg',
-      title: 'Shang Chi',
-      category: 'movie',
-    },
-    {
-      vote: '8.4',
-      img: './assets/portadas/img3.jpg',
-      title: 'Loki',
-      category: 'serie',
-    },
-    {
-      vote: '8.3',
-      img: './assets/portadas/img4.jpg',
-      title: 'How I Met Your Mother',
-      category: 'serie',
-    },
-    {
-      vote: '8.3',
-      img: './assets/portadas/img5.jpg',
-      title: 'Money Heist',
-      category: 'serie',
-    },
-    {
-      vote: '8.8',
-      img: './assets/portadas/img6.jpg',
-      title: 'Friends',
-      category: 'serie',
-    },
-    {
-      vote: '8.1',
-      img: './assets/portadas/img7.jpg',
-      title: 'The Big Bang Theory',
-      category: 'serie',
-    },
-    {
-      vote: '7.0',
-      img: './assets/portadas/img8.jpg',
-      title: 'Two And a Half Men',
-      category: 'serie',
-    },
-  ];
-  movieFilter: Movie[] = [];
+  moviesList: Movie[] = [];
   movieResult: Movie[] = [];
   filter: string = '';
   toSearch: string = '';
+  textFilter: string = 'Todos';
+
+  constructor(private _moviesService: MoviesService) {}
 
   ngOnInit(): void {
-    this.movieResult = this.movieFilter = this.moviesList;
+    this.getAll();
+  }
+
+  public getAll() {
+    this.textFilter = 'Todos';
+    this.filter = '';
+    this._moviesService.getAll().subscribe({
+      next: (response: ResponseData) => {
+        this.movieResult = this.moviesList = response?.results || [];
+      },
+      error: (err) => {
+        console.error('Error -> getAll: ', err);
+      },
+      complete() {
+        console.log('Listo');
+      },
+    });
+  }
+
+  public getMovies() {
+    this.textFilter = 'Películas';
+    this.filter = 'movie';
+    this._moviesService.getMovies().subscribe({
+      next: (response: ResponseData) => {
+        this.movieResult = this.moviesList = response?.results || [];
+      },
+      error: (err) => {
+        console.error('Error -> getMovies: ', err);
+      },
+      complete() {
+        console.log('Listo');
+      },
+    });
+  }
+
+  public getSeries() {
+    this.textFilter = 'Series';
+    this.filter = 'tv';
+    this._moviesService.getSeries().subscribe({
+      next: (response: ResponseData) => {
+        this.movieResult = this.moviesList = response?.results || [];
+      },
+      error: (err) => {
+        console.error('Error -> getSeries: ', err);
+      },
+      complete() {
+        console.log('Listo');
+      },
+    });
   }
 
   search(text: string) {
     console.log(text);
     this.movieResult = [];
     if (text.length) {
-      this.movieFilter.forEach((data) => {
+      this.moviesList.forEach((data) => {
         if (data.title?.toLowerCase().includes(text.toLowerCase()))
           this.movieResult.push(data);
       });
-    } else this.movieResult = this.movieFilter;
-  }
-
-  filters(value: string) {
-    this.toSearch = '';
-    this.filter = value;
-    if (value.length === 0) this.movieFilter = this.moviesList;
-    else {
-      this.movieFilter = this.moviesList.filter(
-        (item) => item.category === value
-      );
-    }
-    this.movieResult = this.movieFilter;
+    } else this.movieResult = this.moviesList;
   }
 }

@@ -16,21 +16,21 @@
       <li
         class="link-regular item-tab"
         [ngClass]="filter == '' ? 'active' : ''"
-        (click)="filters('')"
+        (click)="getAll()"
       >
         Todos
       </li>
       <li
         class="link-regular item-tab"
         [ngClass]="filter == 'movie' ? 'active' : ''"
-        (click)="filters('movie')"
+        (click)="getMovies()"
       >
         Películas
       </li>
       <li
         class="link-regular item-tab"
-        [ngClass]="filter == 'serie' ? 'active' : ''"
-        (click)="filters('serie')"
+        [ngClass]="filter == 'tv' ? 'active' : ''"
+        (click)="getSeries()"
       >
         Series
       </li>
@@ -39,18 +39,9 @@
 </section>
 <section class="container">
   <h3 class="all d-block">
-    Todos <small class="body-regular">({{ movieResult.length }})</small>
+    {{ textFilter }}
+    <small class="body-regular">({{ movieResult.length }})</small>
   </h3>
 
-  <!-- <app-card></app-card> -->
-
-  <div class="d-flex justify-content-center flex-wrap mb-6">
-    <div class="cards col-md-3 col-12" *ngFor="let item of movieResult">
-      <div class="star d-flex justify-content-center align-items-center">
-        <i class="far fa-star me-1"></i>{{ item.vote }}
-      </div>
-      <img class="portada" src="{{ item.img }}" alt="protada" />
-      <p class="title-card link-regular">{{ item.title }}</p>
-    </div>
-  </div>
+  <app-card [data]="movieResult"></app-card>
 </section>

@@ -1,58 +1,15 @@
 <div class="d-flex justify-content-center flex-wrap mb-6">
-  <div class="cards col-md-3 col-12">
+  <div class="cards col-md-3 col-12" *ngFor="let item of data">
     <div class="star d-flex justify-content-center align-items-center">
-      <i class="far fa-star me-1"></i>6.8
+      <i class="far fa-star me-1"></i>{{ item.vote_average.toFixed(1) }}
     </div>
-    <img class="portada" src="./assets/portadas/img1.jpg" alt="protada" />
-    <p class="title-card link-regular">Black Widow</p>
-  </div>
-  <div class="cards col-md-3 col-12">
-    <div class="star d-flex justify-content-center align-items-center">
-      <i class="far fa-star me-1"></i>7.9
-    </div>
-    <img class="portada" src="./assets/portadas/img2.jpg" alt="protada" />
-    <p class="title-card link-regular">Shang Chi</p>
-  </div>
-  <div class="cards col-md-3 col-12">
-    <div class="star d-flex justify-content-center align-items-center">
-      <i class="far fa-star me-1"></i>8.4
-    </div>
-    <img class="portada" src="./assets/portadas/img3.jpg" alt="protada" />
-    <p class="title-card link-regular">Loki</p>
-  </div>
-  <div class="cards col-md-3 col-12">
-    <div class="star d-flex justify-content-center align-items-center">
-      <i class="far fa-star me-1"></i>8.3
-    </div>
-    <img class="portada" src="./assets/portadas/img4.jpg" alt="protada" />
-    <p class="title-card link-regular">How I Met Your Mother</p>
-  </div>
-  <div class="cards col-md-3 col-12">
-    <div class="star d-flex justify-content-center align-items-center">
-      <i class="far fa-star me-1"></i>8.3
-    </div>
-    <img class="portada" src="./assets/portadas/img5.jpg" alt="protada" />
-    <p class="title-card link-regular">Money Heist</p>
-  </div>
-  <div class="cards col-md-3 col-12">
-    <div class="star d-flex justify-content-center align-items-center">
-      <i class="far fa-star me-1"></i>8.8
-    </div>
-    <img class="portada" src="./assets/portadas/img6.jpg" alt="protada" />
-    <p class="title-card link-regular">Friends</p>
-  </div>
-  <div class="cards col-md-3 col-12">
-    <div class="star d-flex justify-content-center align-items-center">
-      <i class="far fa-star me-1"></i>8.1
-    </div>
-    <img class="portada" src="./assets/portadas/img7.jpg" alt="protada" />
-    <p class="title-card link-regular">The Big Bang Theory</p>
-  </div>
-  <div class="cards col-md-3 col-12">
-    <div class="star d-flex justify-content-center align-items-center">
-      <i class="far fa-star me-1"></i>7.0
-    </div>
-    <img class="portada" src="./assets/portadas/img8.jpg" alt="protada" />
-    <p class="title-card link-regular">Two And a Half Men</p>
+    <img
+      class="portada"
+      src="https://image.tmdb.org/t/p/w500/{{ item.poster_path }}"
+      alt="protada"
+    />
+    <p class="title-card link-regular">
+      {{ item.name || item.title }}
+    </p>
   </div>
 </div>
